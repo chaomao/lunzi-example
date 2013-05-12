@@ -1,9 +1,11 @@
 package app.models;
 
+import com.thoughtworks.orm.Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book extends Model {
     private String name;
     private List<Author> authors = new ArrayList<>();
 

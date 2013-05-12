@@ -1,14 +1,17 @@
 package app.models;
 
-public class Author {
+import com.thoughtworks.orm.Model;
+
+public class Author extends Model {
     private String name;
     private int age;
 
     public Author() {
     }
 
-    public Author(String name) {
+    public Author(String name, int age) {
         this.name = name;
+        this.age = age;
     }
 
     public String getName() {
