@@ -1,0 +1,22 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.mortbay.jetty:jetty:6.1.26'
+    compile 'com.google.guava:guava:14.0.1'
+    compile 'mysql:mysql-connector-java:5.1.24'
+    compile 'com.samskivert:jmustache:1.7'
+    compile fileTree(dir: 'lib', include: '*.jar')
+}
+
+task "create-dirs" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
