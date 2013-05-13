@@ -1,13 +1,15 @@
 package app.models;
 
 import com.thoughtworks.orm.Model;
+import com.thoughtworks.orm.annotation.HasMany;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Model {
     private String name;
-    private List<Author> authors = new ArrayList<>();
+    @HasMany(foreignKey = "book_id", klass = Author.class)
+    private ArrayList<Author> authors = new ArrayList<>();
 
     public Book() {
     }
@@ -32,7 +34,7 @@ public class Book extends Model {
         return authors;
     }
 
-    public void setAuthors(List<Author> authors) {
+    public void setAuthors(ArrayList<Author> authors) {
         this.authors = authors;
     }
 }

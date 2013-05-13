@@ -1,12 +1,13 @@
 package app.controllers;
 
-import app.models.Author;
 import app.models.Book;
-import com.google.common.collect.Lists;
 import com.thoughtworks.mvc.annotations.Path;
 import com.thoughtworks.mvc.annotations.Post;
 import com.thoughtworks.mvc.annotations.RequestParameter;
 import com.thoughtworks.mvc.model.ModelMap;
+import com.thoughtworks.orm.finder.ModelFinder;
+
+import java.util.List;
 
 public class BookController {
 
@@ -17,6 +18,7 @@ public class BookController {
     @Path("/book/create")
     @Post
     public ModelMap create(@RequestParameter("book") Book book) {
+        book.save();
         ModelMap modelMap = new ModelMap();
         modelMap.put("book", book);
         return modelMap;
@@ -25,11 +27,7 @@ public class BookController {
     @Path("/book")
     public ModelMap index() {
         ModelMap modelMap = new ModelMap();
-        Book book = new Book("how to new bee");
-        book.addAuthor(new Author("Mao chao 1", 1));
-        book.addAuthor(new Author("Mao chao 2", 2));
-
-        modelMap.put("books", Lists.newArrayList(book));
+        modelMap.put("books", ModelFinder.findAll(Book.class));
         return modelMap;
     }
 }
