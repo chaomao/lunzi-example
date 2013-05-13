@@ -10,6 +10,7 @@ public class Book extends Model {
     private String name;
     @HasMany(foreignKey = "book_id", klass = Author.class)
     private ArrayList<Author> authors = new ArrayList<>();
+    private BookCategory category;
 
     public Book() {
     }
@@ -18,23 +19,15 @@ public class Book extends Model {
         this.name = name;
     }
 
-    public void addAuthor(Author author) {
-        authors.add(author);
+    public BookCategory getCategory() {
+        return category;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public List<Author> getAuthors() {
         return authors;
-    }
-
-    public void setAuthors(ArrayList<Author> authors) {
-        this.authors = authors;
     }
 }

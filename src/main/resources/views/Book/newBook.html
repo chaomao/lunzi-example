@@ -8,6 +8,12 @@ Create a new book
 <form action="/book/create" method="post">
     <label for="book.name">Book Name</label>
     <input id="book.name" name="book.name" type="text"/>
+    <label for="book.category">Book Category</label>
+    <select name="book.category" id="book.category">
+        <option value="Computer">Computer</option>
+        <option value="Economics">Economics</option>
+        <option value="History">History</option>
+    </select>
     <br>
     <label for="book.author1.name">Author Name</label>
     <input id="book.author1.name" name="book.author[].name" type="text"/>
